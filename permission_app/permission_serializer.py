@@ -18,11 +18,11 @@ class PermissionSerializer(ModelSerializer):
         model = Permission
         fields='__all__'
 
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        data['per_added_by_user'] = UserListingSerializer(instance.per_added_by_user).data if instance.per_added_by_user else None
-        data['per_updated_by_user'] = UserListingSerializer(instance.per_updated_by_user).data if instance.per_updated_by_user else None
-        return data
+    # def to_representation(self, instance):
+    #     data = super().to_representation(instance)
+    #     data['per_added_by_user'] = UserListingSerializer(instance.per_added_by_user).data if instance.per_added_by_user else None
+    #     data['per_updated_by_user'] = UserListingSerializer(instance.per_updated_by_user).data if instance.per_updated_by_user else None
+    #     return data
 
 
 class MakeSerializer(ModelSerializer):

@@ -7,13 +7,7 @@ from utils.reusable_classes import TimeStamps
 
     
 class User(TimeStamps,AbstractUser):
-    # role_choices = (
-    #         ("admin", "admin"),
-    #         ("manager", "manager"),
-    #         ("employee", "employee")
-    #     )
 
-    # role = models.CharField(max_length=30, choices = role_choices, null=True, blank=True)
     guid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
@@ -28,7 +22,7 @@ class User(TimeStamps,AbstractUser):
     last_failed_time = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_locked = models.BooleanField(default=False)
-    user_has_role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='user_has_role1', null=True, blank=True)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='user_role', null=True, blank=True)
     
 
     REQUIRED_FIELDS = ["email", "password"]

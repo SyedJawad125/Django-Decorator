@@ -6,7 +6,7 @@ from rest_framework.response import Response
 #from .blog_serializer import BlogSerializer
 from utils.base_authentication import JWTAuthentication
 from .permission_controller import RoleController, PermissionController, MakeController
-
+from .decorator import permission_required
 from rest_framework.permissions import IsAdminUser
 # Create your views here.
 
@@ -18,6 +18,7 @@ make_controller = MakeController()
 class RoleViews(ModelViewSet):
 
     authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAdminUser]
 
     def post_role(self, request):
         return role_controller.create(request)
@@ -34,7 +35,7 @@ class RoleViews(ModelViewSet):
 class PermissionViews(ModelViewSet):
 
     authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
     
     def post_permission(self, request):
         return permission_controller.create(request)
@@ -49,21 +50,26 @@ class PermissionViews(ModelViewSet):
         return permission_controller.delete_permission(request)
 
 
-
 class MakeViews(ModelViewSet):
     authentication_classes = [JWTAuthentication]
 
     # permission_classes = [IsAdminUser]
 
+    @permission_required(['create_make'])
     def post_make(self, request):
         return make_controller.create(request)
 
+
+    @permission_required(['read_make'])
     def get_make(self, request):
         return make_controller.get_make(request)
 
+
+    @permission_required(['update_make'])
     def update_make(self, request):
         return make_controller.update_make(request)
 
+    @permission_required(['delete_make'])
     def delete_make(self, request):
         return make_controller.delete_make(request)
     

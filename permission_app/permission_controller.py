@@ -20,9 +20,9 @@ class RoleController:
     filterset_class = RoleFilter
     def create(self, request):
         try:
-            request.POST._mutable = True
-            request.data["role_added_by_user"] = request.user.guid
-            request.POST._mutable = False
+            # request.POST._mutable = True
+            # request.data["role_added_by_user"] = request.user.guid
+            # request.POST._mutable = False
 
             # if request.user.role in ['admin','manager'] or request.user.is_superuser: # roles
             validated_data = RoleSerializer(data=request.data)
@@ -113,11 +113,11 @@ class PermissionController:
     filterset_class = PermissionFilter
     def create(self, request):
         try:
-            request.POST._mutable = True
-            request.data["per_added_by_user"] = request.user.guid
-            request.POST._mutable = False
-
-            # if request.user.role in ['admin','manager'] or request.user.is_superuser: # roles
+            # request.POST._mutable = True
+            # request.data["per_added_by_user"] = request.user.guid
+            # request.POST._mutable = False
+            #
+            # # if request.user.role in ['admin','manager'] or request.user.is_superuser: # roles
             validated_data = PermissionSerializer(data=request.data)
             if validated_data.is_valid():
                 response = validated_data.save()
