@@ -18,7 +18,7 @@ make_controller = MakeController()
 class RoleViews(ModelViewSet):
 
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
     def post_role(self, request):
         return role_controller.create(request)
@@ -35,7 +35,7 @@ class RoleViews(ModelViewSet):
 class PermissionViews(ModelViewSet):
 
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     
     def post_permission(self, request):
         return permission_controller.create(request)

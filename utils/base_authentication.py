@@ -13,7 +13,7 @@ class AuthenticationBackend(object):
     def authenticate(self, request, username=None, password=None, **kwargs):
         User = get_user_model()
         try:
-            user = User.objects.get(username=username, is_active=True)  # real
+            user = User.objects.get(username=username)  # real
             # user = User.objects.get(email=username, is_active=True)
             
         except User.DoesNotExist:

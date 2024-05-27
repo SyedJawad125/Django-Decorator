@@ -158,7 +158,7 @@ class PermissionController:
         try:
             if "id" in request.data:
                 #finding instance
-                instance = Role.objects.filter(id=request.data["id"]).first()
+                instance = Permission.objects.filter(id=request.data["id"]).first()
 
                 if instance:
                     request.POST._mutable = True
