@@ -55,21 +55,21 @@ class MakeViews(ModelViewSet):
 
     # permission_classes = [IsAdminUser]
 
-    @permission_required(['create_make'])
+    # @permission_required(['create_make'])
     def post_make(self, request):
         return make_controller.create(request)
 
 
-    @permission_required(['read_make'])
+    # @permission_required(['read_make'])
     def get_make(self, request):
         return make_controller.get_make(request)
 
 
-    @permission_required(['update_make'])
+    # @permission_required(['update_make'])
     def update_make(self, request):
         return make_controller.update_make(request)
 
-    @permission_required(['delete_make'])
+    # @permission_required(['delete_make'])
     def delete_make(self, request):
         return make_controller.delete_make(request)
     

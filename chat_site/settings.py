@@ -32,11 +32,11 @@ SECRET_KEY = 'django-insecure-x6l=-_v0=6c#+-zd!psi1p!jl5+tewa)&)4(gz-ciob(ns2h9)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 ALLOWED_HOSTS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
-ALLOWED_HOSTS = ['*', 'localhost:3000', 'http://localhost:3000']
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,9 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'chat_site.urls'

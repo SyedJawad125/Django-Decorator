@@ -60,7 +60,7 @@ class LoginSerializer(serializers.Serializer):
         write_only=True
     )
     def validate(self, instance):
-        if len(instance["password"]) < 6:
+        if len(instance["password"]) < 8:
             raise serializers.ValidationError("Password must be at least 8 characters long.", 400)
         if User.objects.filter(username=instance["username"], is_active=False, is_locked=True).exists():
             raise serializers.ValidationError("Your account has been deactivated.", 400)
