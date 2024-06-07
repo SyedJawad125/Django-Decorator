@@ -15,7 +15,5 @@ class Permission(models.Model):
     description = models.TextField()
     code = models.CharField(max_length=50)
 
-
 class Make(models.Model):
     name = models.CharField(max_length=100)
-    
